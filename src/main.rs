@@ -1,3 +1,9 @@
+mod test_one;
+mod ownership;
+
+
 fn main() {
-    println!("Hello, world!");
+    // test_one::test_one();
+
+    ownership::ownership();
 }
