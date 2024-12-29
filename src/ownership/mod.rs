@@ -11,8 +11,8 @@
 pub fn ownership() {
     // 具有所有权的 str
     let s1: String = String::from("hello");
-    let x: &str = "hello, world";
-    let y = x;
+    let x: &str    = "hello, world";
+    let y: &str = x;
     println!("{},{},{}", s1, x, y);
 
     // false
@@ -22,7 +22,7 @@ pub fn ownership() {
     println!("{}",x == y);
 
     let mut clone_s1 = s1.clone();
-    println!("{}",clone_s1 == s1);
+    println!("{}",&clone_s1 == &s1);
 
     // 值传递 前 拷贝 一份
     let clone_s2 = clone_s1.clone();
@@ -43,7 +43,11 @@ pub fn ownership() {
     let mut str = String::from("引用的值");
     let mut_str = append_reference_str(&mut str);
     // 不可以 继续 访问
-    // let new_mut_str = append_reference_str(&mut str);
+    let new_mut_str = append_reference_str(&mut str);
+
+    print!("{}", new_mut_str);
+    // 可以 继续 访问
+    println!("{}",str);
 
     // 块作用域 可以 继续 访问
     {
@@ -56,6 +60,23 @@ pub fn ownership() {
 
 }
 
+// rust 中的 引用和借用
+
+pub fn main() {
+    let mut x = 5;
+
+    x = 6;
+
+    // 所有权转移了
+    let y = &x;
+
+
+
+    print!("{} {}", x, y);
+
+    assert_eq!(5, x);
+    assert_eq!(5, *y);
+}
 fn append_str(mut str: String) -> String {
     str.push_str("world");
     println!("{}",str);

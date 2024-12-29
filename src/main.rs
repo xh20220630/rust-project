@@ -1,9 +1,8 @@
-mod test_one;
-mod ownership;
+mod composite_type;
 
 
 fn main() {
     // test_one::test_one();
 
-    ownership::ownership();
+    composite_type::main();
 }
